@@ -1,5 +1,5 @@
 import sys, re, json, os
-#Thanks
+
 #First argument gives the path to the file that matches SRR* accession codes to metadata (species, sex, tissue, replicate number).
 srr2metadata = open(sys.argv[1], 'r')
 
@@ -99,7 +99,7 @@ for species in speciesList:
 	elif len(onlyFiles) == 1:
 		id2nameDict = makeIdNameDict(os.path.join(speciesDirDict[species], onlyFiles[0]))
 	else:
-		print("Too many files found in species directory. Please remove unneeded files and try again. Terminating")
+		print("Too many files found in species %s directory. Please remove unneeded files and try again. Terminating" % species) 
 		sys.exit()
 	
 	#We now go into each subdirectory and get the quantification file we want
@@ -108,7 +108,7 @@ for species in speciesList:
 		try:
 			srrSpan = list(re.search('SRR\d+', d).span())
 		except AttributeError:
-			print("The directory %s does not appear to be the kind we want. Skipping to next directory")
+			print("The directory %s does not appear to be the kind we want. Skipping to next directory" % d)
 			continue
 		srrCode = d[srrSpan[0]:srrSpan[1]]
 		
