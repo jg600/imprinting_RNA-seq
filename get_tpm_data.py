@@ -1,5 +1,5 @@
 import sys, re, json, os
-
+#Thanks
 #First argument gives the path to the file that matches SRR* accession codes to metadata (species, sex, tissue, replicate number).
 srr2metadata = open(sys.argv[1], 'r')
 
